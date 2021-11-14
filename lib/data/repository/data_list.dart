@@ -36,3 +36,34 @@ List<Map<String, String>> popularCategories = [
     'name': 'Wallet',
   },
 ];
+
+List<Map<String, dynamic>> flashSeleData = [
+  {
+    'image': Images.bag2,
+    'des': 'Lee Pucker design. Leather botinki for handsome designers.',
+    'price': 13.95,
+    'discount': 12,
+    'old_price': 15.5,
+  },
+  {
+    'image': Images.shoe2,
+    'des': 'Lee Pucker design. Leather botinki for handsome designers.',
+    'price': 13.95,
+    'discount': 12,
+    'old_price': 15.5,
+  },
+  {
+    'image': Images.watch2,
+    'des': 'Lee Pucker design. Leather botinki for handsome designers.',
+    'price': 13.95,
+    'discount': 12,
+    'old_price': 15.5,
+  },
+  {
+    'image': Images.sunglass,
+    'des': 'Lee Pucker design. Leather botinki for handsome designers.',
+    'price': 13.95,
+    'discount': 12,
+    'old_price': 15.5,
+  },
+];

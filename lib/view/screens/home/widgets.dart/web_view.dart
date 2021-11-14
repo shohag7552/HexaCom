@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,7 +91,7 @@ class WebView extends StatelessWidget {
                             },
                           ),
                           Positioned(
-                            top: 80,
+                            top: 70,
                             left: 5,
                             child: Container(
                               height: 48,
@@ -112,7 +113,7 @@ class WebView extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: 80,
+                            top: 70,
                             right: 5,
                             child: Container(
                               height: 48,
@@ -138,11 +139,217 @@ class WebView extends StatelessWidget {
                     )
                   ],
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: size.width * 0.7,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Flash Sale',
+                          style: style,
+                        ),
+                        const Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorResources.COLOR_PRIMARY,
+                              width: 1,
+                            ),
+                            color: ColorResources.COLOR_WHITE,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                'View All ',
+                                style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorResources.COLOR_PRIMARY,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 14,
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 130,
+                      child: Stack(
+                        children: [
+                          ListView.builder(
+                            itemCount: flashSeleData.length,
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: showItem(index),
+                              );
+                            },
+                          ),
+                          Positioned(
+                            top: 50,
+                            left: 5,
+                            child: Container(
+                              height: 48,
+                              width: 48,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: ColorResources.COLOR_WHITE,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: ColorResources.COLOR_SHADOW
+                                        .withOpacity(0.1),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 4),
+                                  )
+                                ],
+                              ),
+                              child: Image.asset(Images.leftArrow),
+                            ),
+                          ),
+                          Positioned(
+                            top: 50,
+                            right: 5,
+                            child: Container(
+                              height: 48,
+                              width: 48,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: ColorResources.COLOR_WHITE,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: ColorResources.COLOR_SHADOW
+                                        .withOpacity(0.1),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 4),
+                                  )
+                                ],
+                              ),
+                              child: Image.asset(Images.rightArrow),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 105,
+              ),
             ],
           ),
         );
       }),
+    );
+  }
+
+  Widget showItem(int index) {
+    return Container(
+      width: 340,
+      decoration: const BoxDecoration(
+        color: ColorResources.COLOR_WHITE,
+      ),
+      padding: const EdgeInsets.all(5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(right: 5.0),
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: ColorResources.COLOR_ITEM_BG,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Image.asset(flashSeleData[index]['image']),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  flashSeleData[index]['des'],
+                  style: GoogleFonts.lato(
+                    textStyle: style.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Text(
+                  '****** 4.56',
+                  style: GoogleFonts.lato(
+                    textStyle: style.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Text(
+                  flashSeleData[index]['price'].toString(),
+                  style: GoogleFonts.lato(
+                    textStyle: style.copyWith(
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      flashSeleData[index]['old_price'].toString(),
+                      style: GoogleFonts.lato(
+                        textStyle: style.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    Text(
+                      '-${flashSeleData[index]['discount']} %',
+                      style: GoogleFonts.lato(
+                        textStyle: style.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -207,11 +414,13 @@ class WebView extends StatelessWidget {
         dotDecoration: DotDecoration(
           height: 5,
           width: 40,
+          borderRadius: BorderRadius.circular(5),
           color: ColorResources.COLOR_WHITE.withOpacity(0.37),
         ),
         activeDotDecoration: const DotDecoration(
           height: 5,
           width: 40,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           color: ColorResources.COLOR_WHITE,
         ),
       ),

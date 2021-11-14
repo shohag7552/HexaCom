@@ -16,4 +16,7 @@ class Images {
   static const String moneyBag = 'assets/images/moneyBag.png';
   static const String leftArrow = 'assets/images/left_arrow.png';
   static const String rightArrow = 'assets/images/right_arrow.png';
+  static const String shoe2 = 'assets/images/shoe2.png';
+  static const String watch2 = 'assets/images/watch2.png';
+  static const String bag2 = 'assets/images/bag2.png';
 }
