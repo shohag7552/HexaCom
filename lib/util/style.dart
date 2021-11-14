@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'color_resources.dart';
 
 const latoLight = TextStyle(
   fontFamily: 'Lato',
@@ -15,4 +18,12 @@ const latoBold = TextStyle(
 const latoBlack = TextStyle(
   fontFamily: 'Lato',
   fontWeight: FontWeight.w900,
+);
+
+TextStyle style = GoogleFonts.lato(
+  textStyle: const TextStyle(
+    color: ColorResources.COLOR_TEXT,
+    fontSize: 30,
+    fontWeight: FontWeight.w700,
+  ),
 );

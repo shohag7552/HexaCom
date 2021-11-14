@@ -7,4 +7,13 @@ class Images {
   static const String profile_logo = 'assets/images/profile.png';
   static const String search_logo = 'assets/images/search.png';
   static const String banner = 'assets/images/banner1.png';
+  static const String shoe = 'assets/images/shoe.png';
+  static const String beauty = 'assets/images/beauty.png';
+  static const String sunglass = 'assets/images/sunglass.png';
+  static const String bag = 'assets/images/bag.png';
+  static const String watch = 'assets/images/watch.png';
+  static const String ball = 'assets/images/ball.png';
+  static const String moneyBag = 'assets/images/moneyBag.png';
+  static const String leftArrow = 'assets/images/left_arrow.png';
+  static const String rightArrow = 'assets/images/right_arrow.png';
 }
