@@ -14,22 +14,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       width: double.infinity,
       height: 94,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             height: 30,
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Image.asset(Images.hexaCom_logo),
           ),
-          const SizedBox(
-            width: 23,
-          ),
+          // const SizedBox(
+          //   width: 23,
+          // ),
           categoriesStyle(Images.categories_logo, 'Categories'),
           const SizedBox(
-            width: 20,
+            width: 5,
           ),
           categoriesStyle(Images.brand_logo, 'Brands'),
           const SizedBox(
-            width: 20,
+            width: 5,
           ),
           Container(
             height: 50,
@@ -61,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Center(
-                      child: Container(
+                      child: SizedBox(
                         height: 16,
                         child: Image.asset(Images.search_logo),
                       ),
@@ -69,6 +70,39 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 )
               ],
+            ),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          verticalIconText(icon: Images.profile_logo, name: 'My Account'),
+          verticalIconText(icon: Images.love_logo, name: 'WishList'),
+          verticalIconText(icon: Images.cart_logo, name: 'cart'),
+        ],
+      ),
+    );
+  }
+
+  Widget verticalIconText({String? icon, String? name}) {
+    return SizedBox(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 16,
+            width: 16,
+            child: Image.asset(icon!),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            name!,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: ColorResources.COLOR_WHITE,
             ),
           )
         ],
