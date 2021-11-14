@@ -6,4 +6,5 @@ class Images {
   static const String love_logo = 'assets/images/love.png';
   static const String profile_logo = 'assets/images/profile.png';
   static const String search_logo = 'assets/images/search.png';
+  static const String banner = 'assets/images/banner1.png';
 }

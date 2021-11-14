@@ -6,11 +6,15 @@ class WebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Column(
         children: [
-          // CustomAppBar(),
+          const SizedBox(
+            height: 30,
+          ),
+          Container()
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexacom/util/color_resources.dart';
 import 'package:hexacom/util/images.dart';
 
@@ -49,6 +50,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Search Whatever You Need',
+                        hintStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
@@ -99,10 +104,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Text(
             name!,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: ColorResources.COLOR_WHITE,
+            style: GoogleFonts.lato(
+              textStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: ColorResources.COLOR_WHITE,
+              ),
             ),
           )
         ],
@@ -123,10 +130,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         Text(
           name!,
-          style: const TextStyle(
-            color: ColorResources.COLOR_WHITE,
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
+          style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+              color: ColorResources.COLOR_WHITE,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ],
