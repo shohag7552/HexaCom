@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,9 @@ class WebView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    print(size.width);
+
     return Scaffold(
       backgroundColor: ColorResources.COLOR_WHITE,
       appBar: const CustomAppBar(),
@@ -32,9 +37,7 @@ class WebView extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              Container(
-                //color: Colors.amber,
-                // height: 300,
+              SizedBox(
                 width: size.width * 0.7,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +94,7 @@ class WebView extends StatelessWidget {
                             },
                           ),
                           Positioned(
-                            top: 70,
+                            top: 50,
                             left: 5,
                             child: Container(
                               height: 48,
@@ -113,7 +116,7 @@ class WebView extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: 70,
+                            top: 50,
                             right: 5,
                             child: Container(
                               height: 48,
@@ -155,6 +158,88 @@ class WebView extends StatelessWidget {
                           style: style,
                         ),
                         const Spacer(),
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 5),
+                              child: Text(
+                                '108',
+                                style: GoogleFonts.lato(
+                                  textStyle: style.copyWith(
+                                    color: ColorResources.COLOR_WHITE,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Text(' : '),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 5),
+                              child: Text(
+                                '07',
+                                style: GoogleFonts.lato(
+                                  textStyle: style.copyWith(
+                                    color: ColorResources.COLOR_WHITE,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Text(' : '),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 5),
+                              child: Text(
+                                '14',
+                                style: GoogleFonts.lato(
+                                  textStyle: style.copyWith(
+                                    color: ColorResources.COLOR_WHITE,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Text(' : '),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: ColorResources.COLOR_WHITE,
+                                border: Border.all(
+                                  color: ColorResources.COLOR_PRIMARY,
+                                  width: 1,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 5),
+                              child: Text(
+                                '07',
+                                style: GoogleFonts.lato(
+                                  textStyle: style.copyWith(
+                                    color: ColorResources.COLOR_PRIMARY,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -260,6 +345,429 @@ class WebView extends StatelessWidget {
               const SizedBox(
                 height: 105,
               ),
+              SizedBox(
+                height: 320,
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: bannerList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Stack(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 50),
+                          width: size.width * 0.33,
+                          child: Image.asset(
+                            bannerList[index]['image'].toString(),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                            top: 30,
+                            left: 20,
+                            child: SizedBox(
+                              height: 200,
+                              child: Image.asset(
+                                bannerList[index]['name'].toString(),
+                              ),
+                            ))
+                      ],
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 90,
+              ),
+              Container(
+                width: size.width * 0.7,
+                // color: Colors.amber,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Featured Products',
+                          style: style,
+                        ),
+                        const Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorResources.COLOR_PRIMARY,
+                              width: 1,
+                            ),
+                            color: ColorResources.COLOR_WHITE,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                'View All ',
+                                style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorResources.COLOR_PRIMARY,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 14,
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 600,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 96, vertical: 110),
+                                  decoration: BoxDecoration(
+                                      color: ColorResources.COLOR_GREY,
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: Image.asset(
+                                    Images.watch,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 20,
+                                  left: 20,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 19, vertical: 13),
+                                    decoration: BoxDecoration(
+                                      color: ColorResources.COLOR_BLack,
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    child: Text(
+                                      '20% OFF',
+                                      style: GoogleFonts.lato(
+                                          textStyle: offerStyle),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: Container(
+                                    height: 100,
+                                    padding: const EdgeInsets.only(
+                                        top: 20, left: 40, right: 40),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black54,
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.black54.withOpacity(0.0),
+                                          Colors.black54,
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              width: 300.0,
+                                              child: Text(
+                                                'Lee Pucker design. Leather botinki for handsome designers. Free shipping.',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              '****** 4.56',
+                                              style: GoogleFonts.lato(
+                                                textStyle: style.copyWith(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              '\$ 13.95',
+                                              style: GoogleFonts.lato(
+                                                textStyle: style.copyWith(
+                                                  fontSize: 24,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              '\$ 13.95',
+                                              style: GoogleFonts.lato(
+                                                textStyle: style.copyWith(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: GridView.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 12,
+                                  mainAxisSpacing: 12,
+                                  childAspectRatio: 0.75,
+                                ),
+                                itemCount: gridData.length,
+                                itemBuilder: (constext, index) {
+                                  return Column(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            color: ColorResources.COLOR_GREY,
+                                          ),
+                                          padding: const EdgeInsets.all(10),
+                                          child: Image.asset(
+                                            gridData[index]['image'],
+                                            fit: BoxFit.fitHeight,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${gridData[index]['des']}',
+                                                style: gridStyle,
+                                              ),
+                                              Text(
+                                                '\$ ${gridData[index]['price']}',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontSize: 24,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Text(
+                                                '****** 4.56',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                width: size.width * 0.7,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Top Brands',
+                          style: style,
+                        ),
+                        const Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorResources.COLOR_PRIMARY,
+                              width: 1,
+                            ),
+                            color: ColorResources.COLOR_WHITE,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                'View All ',
+                                style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorResources.COLOR_PRIMARY,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 14,
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 110,
+                      child: Stack(
+                        children: [
+                          ListView.builder(
+                            itemCount: logos.length,
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: Container(
+                                  height: 110,
+                                  width: 110,
+                                  padding: const EdgeInsets.all(30),
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorResources.COLOR_ITEM_BG,
+                                  ),
+                                  child: Image.asset(
+                                    logos[index].toString(),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          Positioned(
+                            top: 30,
+                            left: 5,
+                            child: Container(
+                              height: 48,
+                              width: 48,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: ColorResources.COLOR_WHITE,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: ColorResources.COLOR_SHADOW
+                                        .withOpacity(0.1),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 4),
+                                  )
+                                ],
+                              ),
+                              child: Image.asset(Images.leftArrow),
+                            ),
+                          ),
+                          Positioned(
+                            top: 30,
+                            right: 5,
+                            child: Container(
+                              height: 48,
+                              width: 48,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: ColorResources.COLOR_WHITE,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: ColorResources.COLOR_SHADOW
+                                        .withOpacity(0.1),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 4),
+                                  )
+                                ],
+                              ),
+                              child: Image.asset(Images.rightArrow),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 90,
+              ),
+              SizedBox(
+                height: 400,
+                width: double.infinity,
+                child: Image.asset(
+                  Images.longBanner,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(
+                height: 90,
+              ),
             ],
           ),
         );
@@ -294,7 +802,7 @@ class WebView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  flashSeleData[index]['des'],
+                  '${flashSeleData[index]['des']}',
                   style: GoogleFonts.lato(
                     textStyle: style.copyWith(
                       fontWeight: FontWeight.w400,
@@ -312,7 +820,7 @@ class WebView extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  flashSeleData[index]['price'].toString(),
+                  '\$${flashSeleData[index]['price']}',
                   style: GoogleFonts.lato(
                     textStyle: style.copyWith(
                       fontSize: 24,
@@ -322,7 +830,7 @@ class WebView extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      flashSeleData[index]['old_price'].toString(),
+                      '\$${flashSeleData[index]['old_price']}',
                       style: GoogleFonts.lato(
                         textStyle: style.copyWith(
                           fontSize: 12,
@@ -335,7 +843,7 @@ class WebView extends StatelessWidget {
                       width: 7,
                     ),
                     Text(
-                      '-${flashSeleData[index]['discount']} %',
+                      '\$-${flashSeleData[index]['discount']} %',
                       style: GoogleFonts.lato(
                         textStyle: style.copyWith(
                           fontSize: 12,

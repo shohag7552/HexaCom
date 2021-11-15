@@ -27,3 +27,17 @@ TextStyle style = GoogleFonts.lato(
     fontWeight: FontWeight.w700,
   ),
 );
+TextStyle offerStyle = GoogleFonts.lato(
+  textStyle: const TextStyle(
+    color: ColorResources.COLOR_WHITE,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  ),
+);
+
+TextStyle gridStyle = GoogleFonts.lato(
+  textStyle: style.copyWith(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  ),
+);

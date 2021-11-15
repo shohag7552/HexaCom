@@ -19,4 +19,24 @@ class Images {
   static const String shoe2 = 'assets/images/shoe2.png';
   static const String watch2 = 'assets/images/watch2.png';
   static const String bag2 = 'assets/images/bag2.png';
+  static const String banner2 = 'assets/images/banner2.png';
+  static const String banner3 = 'assets/images/banner3.png';
+  static const String banner4 = 'assets/images/banner4.png';
+  static const String banner_text = 'assets/images/banner_text.png';
+  static const String banner_text2 = 'assets/images/banner_text2.png';
+  static const String shoe3 = 'assets/images/shoe3.png';
+  static const String bag3 = 'assets/images/bag3.png';
+  static const String ofline = 'assets/images/default.png';
+  static const String longBanner = 'assets/images/banner_long.png';
+}
+
+class Logos {
+  static const String apple = 'assets/images/apple.png';
+  static const String bata = 'assets/images/bata.png';
+  static const String huaway = 'assets/images/huaway.png';
+  static const String i_pay = 'assets/images/i_pay.png';
+  static const String logi = 'assets/images/logi.png';
+  static const String samsung = 'assets/images/samsung.png';
+  static const String unknown = 'assets/images/unknown.png';
+  static const String visa = 'assets/images/visa.png';
 }

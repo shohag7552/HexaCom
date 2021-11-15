@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "326068001774",
+    "project_id": "hexacom-web",
+    "storage_bucket": "hexacom-web.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326068001774:android:230670c63e2cd99b28ccff",
+        "android_client_info": {
+          "package_name": "com.example.hexacom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326068001774-778uqurtjpoctp4ghk50bidlvi3s7ftp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr1IZ4k-_q0dGCGHjAcdduezwcd_DBJPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326068001774-778uqurtjpoctp4ghk50bidlvi3s7ftp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
