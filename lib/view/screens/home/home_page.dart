@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:hexacom/view/screens/home/widgets.dart/mobile_view.dart';
 import 'package:hexacom/view/screens/home/widgets.dart/web_view.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,14 +11,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       log(constraints.maxWidth.toString());
-      if (constraints.maxWidth > 1200) {
+      if (constraints.maxWidth > 1587) {
         return WebView();
       } else {
-        return Container(
-          color: Colors.green,
-          height: 500,
-          width: double.infinity,
-        );
+        return MobileView();
       }
     });
   }

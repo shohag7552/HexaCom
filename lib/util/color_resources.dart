@@ -8,4 +8,5 @@ class ColorResources {
   static const Color COLOR_SHADOW = Color(0xFF000000);
   static const Color COLOR_GREY = Color(0xFFEDEDED);
   static const Color COLOR_BLack = Color(0xFF373737);
+  static const Color COLOR_BLue = Color(0xFFC8E4FF);
 }

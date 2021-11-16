@@ -29,6 +29,12 @@ class Images {
   static const String ofline = 'assets/images/default.png';
   static const String longBanner = 'assets/images/banner_long.png';
   static const String girlBanner = 'assets/images/banner5.png';
+  static const String downBanner = 'assets/images/downBanner.png';
+  static const String moneyBag2 = 'assets/images/moneybag2.png';
+  static const String moneyBag3 = 'assets/images/moneybag3.png';
+  static const String twiter = 'assets/images/twiter.png';
+  static const String facebook = 'assets/images/facebook.png';
+  static const String instragram = 'assets/images/instragram.png';
 }
 
 class Logos {
@@ -40,4 +46,17 @@ class Logos {
   static const String samsung = 'assets/images/samsung.png';
   static const String unknown = 'assets/images/unknown.png';
   static const String visa = 'assets/images/visa.png';
+}
+
+class TopSeller {
+  static const String top1 = 'assets/images/Rectangle 25.png';
+  static const String top2 = 'assets/images/Rectangle 2021.png';
+  static const String top3 = 'assets/images/Rectangle 2022.png';
+  static const String top4 = 'assets/images/Rectangle 2023.png';
+  static const String top5 = 'assets/images/Rectangle 2024.png';
+  static const String top6 = 'assets/images/Rectangle 2025.png';
+  static const String top7 = 'assets/images/Rectangle 2026.png';
+  static const String top8 = 'assets/images/Rectangle 2027.png';
+  static const String top9 = 'assets/images/Rectangle 2028.png';
+  static const String top10 = 'assets/images/Rectangle 2029.png';
 }

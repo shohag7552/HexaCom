@@ -19,7 +19,7 @@ const latoBlack = TextStyle(
   fontFamily: 'Lato',
   fontWeight: FontWeight.w900,
 );
-
+//
 TextStyle style = GoogleFonts.lato(
   textStyle: const TextStyle(
     color: ColorResources.COLOR_TEXT,
@@ -35,8 +35,31 @@ TextStyle offerStyle = GoogleFonts.lato(
   ),
 );
 
+TextStyle bottomBigTextStyle = GoogleFonts.lato(
+  textStyle: const TextStyle(
+    color: ColorResources.COLOR_WHITE,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  ),
+);
+TextStyle bottomSmallTextStyle = GoogleFonts.lato(
+  textStyle: const TextStyle(
+    color: ColorResources.COLOR_WHITE,
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  ),
+);
+TextStyle bottomMediumTextStyle = GoogleFonts.lato(
+  textStyle: const TextStyle(
+    color: ColorResources.COLOR_WHITE,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
 TextStyle gridStyle = GoogleFonts.lato(
   textStyle: style.copyWith(
+    color: ColorResources.COLOR_TEXT,
     fontSize: 16,
     fontWeight: FontWeight.w500,
   ),
