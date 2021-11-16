@@ -23,6 +23,9 @@ class WebView extends StatelessWidget {
 
     print(size.width);
 
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    final double itemWidth = size.width / 2;
+
     return Scaffold(
       backgroundColor: ColorResources.COLOR_WHITE,
       appBar: const CustomAppBar(),
@@ -768,6 +771,184 @@ class WebView extends StatelessWidget {
               const SizedBox(
                 height: 90,
               ),
+              SizedBox(
+                width: size.width * 0.7,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Popular Products',
+                          style: style,
+                        ),
+                        const Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorResources.COLOR_PRIMARY,
+                              width: 1,
+                            ),
+                            color: ColorResources.COLOR_WHITE,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                'View All ',
+                                style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorResources.COLOR_PRIMARY,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 14,
+                                color: ColorResources.COLOR_PRIMARY,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 580,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Image.asset(
+                              Images.girlBanner,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            flex: 7,
+                            child: GridView.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 12,
+                                  mainAxisSpacing: 12,
+                                  childAspectRatio: 1.7,
+                                ),
+                                itemCount: flashSeleData.length,
+                                shrinkWrap: true,
+                                // dragStartBehavior: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (constext, index) {
+                                  return Container(
+                                    width: 340,
+                                    decoration: const BoxDecoration(
+                                      color: ColorResources.COLOR_WHITE,
+                                      //color: Colors.green,
+                                    ),
+                                    //padding: const EdgeInsets.all(5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            margin: const EdgeInsets.only(
+                                                right: 5.0),
+                                            padding: const EdgeInsets.all(15),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  ColorResources.COLOR_ITEM_BG,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                            child: Image.asset(
+                                                flashSeleData[index]['image']),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${flashSeleData[index]['des']}',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '****** 4.56',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '\$${flashSeleData[index]['price']}',
+                                                style: GoogleFonts.lato(
+                                                  textStyle: style.copyWith(
+                                                    fontSize: 24,
+                                                  ),
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '\$${flashSeleData[index]['old_price']}',
+                                                    style: GoogleFonts.lato(
+                                                      textStyle: style.copyWith(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .lineThrough,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 7,
+                                                  ),
+                                                  Text(
+                                                    '\$-${flashSeleData[index]['discount']} %',
+                                                    style: GoogleFonts.lato(
+                                                      textStyle: style.copyWith(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         );

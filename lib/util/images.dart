@@ -28,6 +28,7 @@ class Images {
   static const String bag3 = 'assets/images/bag3.png';
   static const String ofline = 'assets/images/default.png';
   static const String longBanner = 'assets/images/banner_long.png';
+  static const String girlBanner = 'assets/images/banner5.png';
 }
 
 class Logos {
