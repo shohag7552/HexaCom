@@ -9,13 +9,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      log(constraints.maxWidth.toString());
-      if (constraints.maxWidth > 1587) {
-        return WebView();
-      } else {
-        return MobileView();
-      }
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        log(constraints.maxWidth.toString());
+        if (constraints.maxWidth > 1587) {
+          return WebView();
+        } else if (constraints.maxWidth < 650) {
+          return MobileView();
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }

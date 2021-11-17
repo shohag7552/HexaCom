@@ -10,7 +10,9 @@ import 'package:hexacom/data/repository/data_list.dart';
 import 'package:hexacom/util/color_resources.dart';
 import 'package:hexacom/util/images.dart';
 import 'package:hexacom/util/style.dart';
+import 'package:hexacom/view/base/box_on_hover.dart';
 import 'package:hexacom/view/base/custom_app_bar.dart';
+import 'package:hexacom/view/base/on_hover.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WebView extends StatelessWidget {
@@ -68,14 +70,15 @@ class WebView extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                            top: 30,
-                            left: 20,
-                            child: SizedBox(
-                              height: 200,
-                              child: Image.asset(
-                                bannerList[index]['name'].toString(),
-                              ),
-                            ))
+                          top: 30,
+                          left: 20,
+                          child: SizedBox(
+                            height: 200,
+                            child: Image.asset(
+                              bannerList[index]['name'].toString(),
+                            ),
+                          ),
+                        ),
                       ],
                     );
                   },
@@ -126,7 +129,7 @@ class WebView extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
-              bottomPortion()
+              bottomPortion(),
             ],
           ),
         );
@@ -1165,7 +1168,7 @@ class WebView extends StatelessWidget {
             height: 30,
           ),
           SizedBox(
-            height: 110,
+            height: 130,
             child: Stack(
               children: [
                 ListView.builder(
@@ -1173,18 +1176,21 @@ class WebView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                    return OnHover(
                       child: Container(
-                        height: 110,
-                        width: 110,
-                        padding: const EdgeInsets.all(30),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: ColorResources.COLOR_ITEM_BG,
-                        ),
-                        child: Image.asset(
-                          logos[index].toString(),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        margin: const EdgeInsets.only(bottom: 20),
+                        child: Container(
+                          height: 110,
+                          width: 110,
+                          padding: const EdgeInsets.all(30),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: ColorResources.COLOR_ITEM_BG,
+                          ),
+                          child: Image.asset(
+                            logos[index].toString(),
+                          ),
                         ),
                       ),
                     );
@@ -1615,7 +1621,7 @@ class WebView extends StatelessWidget {
             height: 30,
           ),
           SizedBox(
-            height: 130,
+            height: 180,
             child: Stack(
               children: [
                 ListView.builder(
@@ -1623,9 +1629,10 @@ class WebView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return Padding(
+                    return Container(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: showItem(index),
+                      margin: const EdgeInsets.symmetric(vertical: 20),
+                      child: BoxOnHover(child: showItem(index)),
                     );
                   },
                 ),
@@ -1679,7 +1686,7 @@ class WebView extends StatelessWidget {
     );
   }
 
-  SizedBox popularCategoryPortion(Size size) {
+  Widget popularCategoryPortion(Size size) {
     return SizedBox(
       width: size.width * 0.7,
       child: Column(
@@ -1705,16 +1712,18 @@ class WebView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
-                          Container(
-                            height: 150,
-                            width: 150,
-                            padding: const EdgeInsets.all(20),
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: ColorResources.COLOR_ITEM_BG,
-                            ),
-                            child: Image.asset(
-                              popularCategories[index]['image'].toString(),
+                          OnHover(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              padding: const EdgeInsets.all(20),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: ColorResources.COLOR_ITEM_BG,
+                              ),
+                              child: Image.asset(
+                                popularCategories[index]['image'].toString(),
+                              ),
                             ),
                           ),
                           const SizedBox(
