@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexacom/util/color_resources.dart';
 import 'package:hexacom/util/images.dart';
+import 'package:hexacom/view/base/on_hover.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -118,27 +119,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget categoriesStyle(String? icon, String? name) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 16,
-          width: 18,
-          child: Image.asset(icon!),
-        ),
-        const SizedBox(
-          width: 13,
-        ),
-        Text(
-          name!,
-          style: GoogleFonts.lato(
-            textStyle: const TextStyle(
-              color: ColorResources.COLOR_WHITE,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
+    return OnHover(
+      child: Row(
+        children: [
+          SizedBox(
+            height: 16,
+            width: 18,
+            child: Image.asset(icon!),
+          ),
+          const SizedBox(
+            width: 13,
+          ),
+          Text(
+            name!,
+            style: GoogleFonts.lato(
+              textStyle: const TextStyle(
+                color: ColorResources.COLOR_WHITE,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

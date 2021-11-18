@@ -1057,57 +1057,63 @@ class WebView extends StatelessWidget {
                       itemCount: newArrivalData.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                width: double.infinity,
-                                decoration: const BoxDecoration(
-                                  color: ColorResources.COLOR_GREY,
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Image.asset(
-                                  newArrivalData[index]['image'],
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${newArrivalData[index]['des']}',
-                                      style: gridStyle,
+                        return BoxOnHover(
+                          child: Container(
+                            color: ColorResources.COLOR_WHITE,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: ColorResources.COLOR_GREY,
                                     ),
-                                    Text(
-                                      '\$ ${newArrivalData[index]['price']}',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontSize: 24,
+                                    padding: const EdgeInsets.all(10),
+                                    child: Image.asset(
+                                      newArrivalData[index]['image'],
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${newArrivalData[index]['des']}',
+                                          style: gridStyle,
                                         ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      '****** 4.56',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16,
+                                        Text(
+                                          '\$ ${newArrivalData[index]['price']}',
+                                          style: GoogleFonts.lato(
+                                            textStyle: style.copyWith(
+                                              fontSize: 24,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '****** 4.56',
+                                          style: GoogleFonts.lato(
+                                            textStyle: style.copyWith(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         );
                       }),
                 )
