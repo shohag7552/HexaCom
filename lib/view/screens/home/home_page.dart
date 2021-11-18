@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         log(constraints.maxWidth.toString());
-        if (constraints.maxWidth > 1587) {
+        if (constraints.maxWidth > 1325) {
           return WebView();
         } else if (constraints.maxWidth < 650) {
           return MobileView();
@@ -23,3 +23,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+//1587

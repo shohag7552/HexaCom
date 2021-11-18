@@ -751,101 +751,110 @@ class WebView extends StatelessWidget {
                 Expanded(
                   flex: 7,
                   child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: size.width > 1400 ? 3 : 2,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: 1.7,
+                        childAspectRatio:
+                            (1380 < size.width && size.width <= 1473)
+                                ? 1.2
+                                : (1479 < size.width && size.width <= 1640)
+                                    ? 1.2
+                                    : (1640 < size.width && size.width < 1635)
+                                        ? 1
+                                        : 1.7,
                       ),
                       itemCount: flashSeleData.length,
                       shrinkWrap: true,
                       // dragStartBehavior: const NeverScrollableScrollPhysics(),
                       itemBuilder: (constext, index) {
-                        return Container(
-                          width: 340,
-                          decoration: const BoxDecoration(
-                            color: ColorResources.COLOR_WHITE,
-                            //color: Colors.green,
-                          ),
-                          //padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 5.0),
-                                  padding: const EdgeInsets.all(15),
-                                  decoration: BoxDecoration(
-                                    color: ColorResources.COLOR_ITEM_BG,
-                                    borderRadius: BorderRadius.circular(5),
+                        return BoxOnHover(
+                          child: Container(
+                            width: 340,
+                            decoration: const BoxDecoration(
+                              color: ColorResources.COLOR_WHITE,
+                              //color: Colors.green,
+                            ),
+                            //padding: const EdgeInsets.all(5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(right: 5.0),
+                                    padding: const EdgeInsets.all(15),
+                                    decoration: BoxDecoration(
+                                      color: ColorResources.COLOR_ITEM_BG,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Image.asset(
+                                        flashSeleData[index]['image']),
                                   ),
-                                  child: Image.asset(
-                                      flashSeleData[index]['image']),
                                 ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${flashSeleData[index]['des']}',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      '****** 4.56',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$${flashSeleData[index]['price']}',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontSize: 24,
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '\$${flashSeleData[index]['old_price']}',
-                                          style: GoogleFonts.lato(
-                                            textStyle: style.copyWith(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                              decoration:
-                                                  TextDecoration.lineThrough,
-                                            ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${flashSeleData[index]['des']}',
+                                        style: GoogleFonts.lato(
+                                          textStyle: style.copyWith(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 16,
                                           ),
                                         ),
-                                        const SizedBox(
-                                          width: 7,
-                                        ),
-                                        Text(
-                                          '\$-${flashSeleData[index]['discount']} %',
-                                          style: GoogleFonts.lato(
-                                            textStyle: style.copyWith(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                            ),
+                                      ),
+                                      Text(
+                                        '****** 4.56',
+                                        style: GoogleFonts.lato(
+                                          textStyle: style.copyWith(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 16,
                                           ),
                                         ),
-                                      ],
-                                    )
-                                  ],
+                                      ),
+                                      Text(
+                                        '\$${flashSeleData[index]['price']}',
+                                        style: GoogleFonts.lato(
+                                          textStyle: style.copyWith(
+                                            fontSize: 24,
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '\$${flashSeleData[index]['old_price']}',
+                                            style: GoogleFonts.lato(
+                                              textStyle: style.copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 7,
+                                          ),
+                                          Text(
+                                            '\$-${flashSeleData[index]['discount']} %',
+                                            style: GoogleFonts.lato(
+                                              textStyle: style.copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       }),
@@ -914,33 +923,29 @@ class WebView extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 110,
-                                  width: 110,
-                                  // padding: const EdgeInsets.all(20),
-                                  // decoration: const BoxDecoration(
-                                  //   shape: BoxShape.circle,
-                                  //   color: ColorResources
-                                  //       .COLOR_ITEM_BG,
-                                  // ),
-                                  child: Image.asset(
-                                    topSells[index]['image'].toString(),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                Text(
-                                  topSells[index]['name'].toString(),
-                                  style: GoogleFonts.lato(
-                                    textStyle: style.copyWith(
-                                      fontSize: 20,
+                            child: OnHover(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 110,
+                                    width: 110,
+                                    child: Image.asset(
+                                      topSells[index]['image'].toString(),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text(
+                                    topSells[index]['name'].toString(),
+                                    style: GoogleFonts.lato(
+                                      textStyle: style.copyWith(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -1047,13 +1052,14 @@ class WebView extends StatelessWidget {
                 ),
                 SizedBox(
                   child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 6,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: size.width > 1590 ? 6 : 5,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: 0.7,
+                        childAspectRatio: 0.68,
                       ),
+                      padding: const EdgeInsets.only(
+                          bottom: 20, left: 10, right: 10),
                       itemCount: newArrivalData.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
@@ -1422,12 +1428,18 @@ class WebView extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: size.width > 1475 ? 3 : 2,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: 0.7,
+                        childAspectRatio:
+                            (1473 < size.width && size.width <= 1473)
+                                ? 0.4
+                                : (1473 < size.width && size.width <= 1550)
+                                    ? 0.5
+                                    : (1549 < size.width && size.width < 1627)
+                                        ? 0.6
+                                        : 0.7,
                       ),
                       itemCount: gridData.length,
                       itemBuilder: (constext, index) {
