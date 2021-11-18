@@ -25,8 +25,8 @@ class WebView extends StatelessWidget {
 
     print(size.width);
 
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
+    // final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    // final double itemWidth = size.width / 2;
 
     return Scaffold(
       backgroundColor: ColorResources.COLOR_WHITE,
@@ -110,6 +110,14 @@ class WebView extends StatelessWidget {
               ),
               popularProductsPortion(size),
               const SizedBox(
+                height: 50,
+              ),
+              topSellersPortion(size),
+              const SizedBox(
+                height: 50,
+              ),
+              newArrivalsPortion(size),
+              const SizedBox(
                 height: 90,
               ),
 
@@ -134,6 +142,266 @@ class WebView extends StatelessWidget {
           ),
         );
       }),
+    );
+  }
+
+  SizedBox newArrivalsPortion(Size size) {
+    return SizedBox(
+      width: size.width * 0.7,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'New Arrivals',
+                style: style,
+              ),
+              const Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: ColorResources.COLOR_PRIMARY,
+                    width: 1,
+                  ),
+                  color: ColorResources.COLOR_WHITE,
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                child: Row(
+                  children: [
+                    Text(
+                      'View All ',
+                      style: GoogleFonts.lato(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ColorResources.COLOR_PRIMARY,
+                        ),
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: ColorResources.COLOR_PRIMARY,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          SizedBox(
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: size.width > 1590 ? 6 : 5,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.68,
+                ),
+                padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
+                itemCount: newArrivalData.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return BoxOnHover(
+                    child: Container(
+                      color: ColorResources.COLOR_WHITE,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                color: ColorResources.COLOR_GREY,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Image.asset(
+                                newArrivalData[index]['image'],
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${newArrivalData[index]['des']}',
+                                    style: gridStyle,
+                                  ),
+                                  Text(
+                                    '\$ ${newArrivalData[index]['price']}',
+                                    style: GoogleFonts.lato(
+                                      textStyle: style.copyWith(
+                                        fontSize: 24,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    '****** 4.56',
+                                    style: GoogleFonts.lato(
+                                      textStyle: style.copyWith(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+          )
+        ],
+      ),
+    );
+  }
+
+  SizedBox topSellersPortion(Size size) {
+    return SizedBox(
+      width: size.width * 0.7,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'Top Sellers',
+                style: style,
+              ),
+              const Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: ColorResources.COLOR_PRIMARY,
+                    width: 1,
+                  ),
+                  color: ColorResources.COLOR_WHITE,
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                child: Row(
+                  children: [
+                    Text(
+                      'View All ',
+                      style: GoogleFonts.lato(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ColorResources.COLOR_PRIMARY,
+                        ),
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: ColorResources.COLOR_PRIMARY,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          SizedBox(
+            height: 180,
+            child: Stack(
+              children: [
+                ListView.builder(
+                  itemCount: topSells.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: OnHover(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 110,
+                              width: 110,
+                              child: Image.asset(
+                                topSells[index]['image'].toString(),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              topSells[index]['name'].toString(),
+                              style: GoogleFonts.lato(
+                                textStyle: style.copyWith(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                Positioned(
+                  top: 50,
+                  left: 5,
+                  child: Container(
+                    height: 48,
+                    width: 48,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ColorResources.COLOR_WHITE,
+                      boxShadow: [
+                        BoxShadow(
+                          color: ColorResources.COLOR_SHADOW.withOpacity(0.1),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        )
+                      ],
+                    ),
+                    child: Image.asset(Images.leftArrow),
+                  ),
+                ),
+                Positioned(
+                  top: 50,
+                  right: 5,
+                  child: Container(
+                    height: 48,
+                    width: 48,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ColorResources.COLOR_WHITE,
+                      boxShadow: [
+                        BoxShadow(
+                          color: ColorResources.COLOR_SHADOW.withOpacity(0.1),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        )
+                      ],
+                    ),
+                    child: Image.asset(Images.rightArrow),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -862,270 +1130,6 @@ class WebView extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 50,
-          ),
-          SizedBox(
-            width: size.width * 0.7,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Top Sellers',
-                      style: style,
-                    ),
-                    const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: ColorResources.COLOR_PRIMARY,
-                          width: 1,
-                        ),
-                        color: ColorResources.COLOR_WHITE,
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 5),
-                      child: Row(
-                        children: [
-                          Text(
-                            'View All ',
-                            style: GoogleFonts.lato(
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: ColorResources.COLOR_PRIMARY,
-                              ),
-                            ),
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 14,
-                            color: ColorResources.COLOR_PRIMARY,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  height: 180,
-                  child: Stack(
-                    children: [
-                      ListView.builder(
-                        itemCount: topSells.length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: OnHover(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 110,
-                                    width: 110,
-                                    child: Image.asset(
-                                      topSells[index]['image'].toString(),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 30,
-                                  ),
-                                  Text(
-                                    topSells[index]['name'].toString(),
-                                    style: GoogleFonts.lato(
-                                      textStyle: style.copyWith(
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                      Positioned(
-                        top: 50,
-                        left: 5,
-                        child: Container(
-                          height: 48,
-                          width: 48,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: ColorResources.COLOR_WHITE,
-                            boxShadow: [
-                              BoxShadow(
-                                color: ColorResources.COLOR_SHADOW
-                                    .withOpacity(0.1),
-                                blurRadius: 16,
-                                offset: const Offset(0, 4),
-                              )
-                            ],
-                          ),
-                          child: Image.asset(Images.leftArrow),
-                        ),
-                      ),
-                      Positioned(
-                        top: 50,
-                        right: 5,
-                        child: Container(
-                          height: 48,
-                          width: 48,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: ColorResources.COLOR_WHITE,
-                            boxShadow: [
-                              BoxShadow(
-                                color: ColorResources.COLOR_SHADOW
-                                    .withOpacity(0.1),
-                                blurRadius: 16,
-                                offset: const Offset(0, 4),
-                              )
-                            ],
-                          ),
-                          child: Image.asset(Images.rightArrow),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          SizedBox(
-            width: size.width * 0.7,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'New Arrivals',
-                      style: style,
-                    ),
-                    const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: ColorResources.COLOR_PRIMARY,
-                          width: 1,
-                        ),
-                        color: ColorResources.COLOR_WHITE,
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 5),
-                      child: Row(
-                        children: [
-                          Text(
-                            'View All ',
-                            style: GoogleFonts.lato(
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: ColorResources.COLOR_PRIMARY,
-                              ),
-                            ),
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 14,
-                            color: ColorResources.COLOR_PRIMARY,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: size.width > 1590 ? 6 : 5,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 0.68,
-                      ),
-                      padding: const EdgeInsets.only(
-                          bottom: 20, left: 10, right: 10),
-                      itemCount: newArrivalData.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return BoxOnHover(
-                          child: Container(
-                            color: ColorResources.COLOR_WHITE,
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: ColorResources.COLOR_GREY,
-                                    ),
-                                    padding: const EdgeInsets.all(10),
-                                    child: Image.asset(
-                                      newArrivalData[index]['image'],
-                                      fit: BoxFit.fitHeight,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${newArrivalData[index]['des']}',
-                                          style: gridStyle,
-                                        ),
-                                        Text(
-                                          '\$ ${newArrivalData[index]['price']}',
-                                          style: GoogleFonts.lato(
-                                            textStyle: style.copyWith(
-                                              fontSize: 24,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          '****** 4.56',
-                                          style: GoogleFonts.lato(
-                                            textStyle: style.copyWith(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                )
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -1443,57 +1447,63 @@ class WebView extends StatelessWidget {
                       ),
                       itemCount: gridData.length,
                       itemBuilder: (constext, index) {
-                        return Column(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                width: double.infinity,
-                                decoration: const BoxDecoration(
-                                  color: ColorResources.COLOR_GREY,
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Image.asset(
-                                  gridData[index]['image'],
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${gridData[index]['des']}',
-                                      style: gridStyle,
+                        return BoxOnHover(
+                          child: Container(
+                            color: ColorResources.COLOR_WHITE,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: ColorResources.COLOR_GREY,
                                     ),
-                                    Text(
-                                      '\$ ${gridData[index]['price']}',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontSize: 24,
+                                    padding: const EdgeInsets.all(10),
+                                    child: Image.asset(
+                                      gridData[index]['image'],
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${gridData[index]['des']}',
+                                          style: gridStyle,
                                         ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      '****** 4.56',
-                                      style: GoogleFonts.lato(
-                                        textStyle: style.copyWith(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16,
+                                        Text(
+                                          '\$ ${gridData[index]['price']}',
+                                          style: GoogleFonts.lato(
+                                            textStyle: style.copyWith(
+                                              fontSize: 24,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '****** 4.56',
+                                          style: GoogleFonts.lato(
+                                            textStyle: style.copyWith(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         );
                       },
                     ),
